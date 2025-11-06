@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme 12 — You Can Help!</title>
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  background: radial-gradient(circle at top,#e8f5e9 0%,#a5d6a7 40%,#2e7d32 100%);
+  margin:0;
+  color:#1b5e20;
+  text-align:center;
+}
+header {
+  background:linear-gradient(90deg,#1b5e20,#43a047);
+  color:white;
+  padding:0.6rem 1rem;
+  border-bottom:5px solid #c8e6c9;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo {
+  width:55px;height:55px;
+  border-radius:50%;
+  border:3px solid #c8e6c9;
+  background:white;
+  object-fit:cover;
+}
+h2{color:#1b5e20;}
+section {
+  background:rgba(255,255,255,0.98);
+  border-radius:18px;
+  box-shadow:0 0 12px rgba(0,0,0,0.15);
+  padding:15px;
+  max-width:860px;
+  margin:15px auto;
+  text-align:left;
+  line-height:1.5;
+  font-size:0.95rem;
+}
+h3 {
+  background:linear-gradient(90deg,#2e7d32,#66bb6a);
+  color:white;
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:1rem;
+}
+.btn {
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border:none;
+  border-radius:10px;
+  background:#2e7d32;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+.btn:hover{background:#c8e6c9;color:#1b5e20;}
+input[type="text"],textarea,select{
+  border-radius:8px;
+  border:1px solid #ccc;
+  padding:6px;
+  font-family:inherit;
+  font-size:0.9rem;
+}
+input[type="text"]{width:100%;max-width:380px;}
+textarea{width:100%;}
+.round-label{
+  display:inline-block;
+  background:#c8e6c9;
+  color:#1b5e20;
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:0.75rem;
+  font-weight:bold;
+  margin-left:6px;
+}
+.mark-icon{margin-left:8px;font-size:1.2rem;font-weight:bold;}
+.correctMark{color:#00c853;}
+.wrongMark{color:#ff1744;}
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="logo.png" class="logo" alt="AI Bayan logo">
+    <div>
+      <h1 style="margin:0;font-size:1rem;">Theme 12 — You Can Help!</h1>
+      <p style="margin:0;color:#e8f5e9;">English with AI Bayan — Helping others and nature</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<h2>💚 You Can Help!</h2>
+<p style="font-style:italic;color:#1b5e20;">Talking about how children can help at home, at school and in nature</p>
+<p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
+
+<!-- ===== VOCABULARY ===== -->
+<section>
+<h3>🧠 Vocabulary — Helping Others <span class="round-label">Vocabulary</span></h3>
+<p><b>Choose the correct translation (на русский).</b></p>
+
+<p>1) help my family  
+<button class="btn" onclick="speakVocab('I can help my family at home.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v1" value="1"> помогать своей семье</label><br>
+<label><input type="radio" name="v1" value="0"> играть с друзьями</label><br>
+
+<p>2) tidy my room  
+<button class="btn" onclick="speakVocab('I can tidy my room and put my toys away.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v2" value="1"> прибирать свою комнату</label><br>
+<label><input type="radio" name="v2" value="0"> смотреть телевизор</label><br>
+
+<p>3) feed the animals  
+<button class="btn" onclick="speakVocab('Children can feed pets or animals on a farm.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v3" value="1"> кормить животных</label><br>
+<label><input type="radio" name="v3" value="0"> пугать животных</label><br>
+
+<p>4) pick up litter  
+<button class="btn" onclick="speakVocab('We can pick up litter in the park to keep it clean.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v4" value="1"> собирать мусор</label><br>
+<label><input type="radio" name="v4" value="0"> бросать мусор</label><br>
+
+<p>5) help my friend  
+<button class="btn" onclick="speakVocab('You can help your friend with homework or when they are sad.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v5" value="1"> помогать другу</label><br>
+<label><input type="radio" name="v5" value="0"> смеяться над другом</label><br>
+
+<button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
+<div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== GRAMMAR ===== -->
+<section>
+<h3>📘 Grammar — You can / You can’t <span class="round-label">Grammar</span></h3>
+<p><b>We use “can” to talk about things we are able to do, and “can’t” for things we must not do.</b></p>
+<p>Example: You can help at home.  
+You can’t throw rubbish on the ground.</p>
+
+<p>1) You ___ help your parents in the kitchen.</p>
+<label><input type="radio" name="g1" value="can"> can</label><br>
+<label><input type="radio" name="g1" value="cant"> can’t</label><br>
+
+<p>2) You ___ hit other children.</p>
+<label><input type="radio" name="g2" value="cant"> can’t</label><br>
+<label><input type="radio" name="g2" value="can"> can</label><br>
+
+<p>3) You ___ pick up litter in the park.</p>
+<label><input type="radio" name="g3" value="can"> can</label><br>
+<label><input type="radio" name="g3" value="cant"> can’t</label><br>
+
+<button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
+<div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== LISTENING ===== -->
+<section>
+<h3>🎧 Listening — Helping Day <span class="round-label">Listening</span></h3>
+<p><b>Listen and choose True or False.</b></p>
+<button class="btn" onclick="bayanListening()">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+<p>1) The children help their teacher in the classroom.</p>
+<select id="t1"><option>—</option><option>True</option><option>False</option></select>
+
+<p>2) They throw rubbish on the floor.</p>
+<select id="t2"><option>—</option><option>True</option><option>False</option></select>
+
+<p>3) They help each other and feel happy.</p>
+<select id="t3"><option>—</option><option>True</option><option>False</option></select>
+
+<button class="btn" onclick="checkListening()">Check listening ✅</button>
+<div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== READING ===== -->
+<section>
+<h3>📖 Reading — I Can Help <span class="round-label">Reading</span></h3>
+<p><b>Read or listen:</b></p>
+<button class="btn" onclick="bayanReading()">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+<div style="margin-top:10px;background:#e8f5e9;border-radius:10px;padding:10px;">
+  <p>
+    My name is Ali. I am eleven years old.  
+    At home I can help my family. I tidy my room and wash the dishes.  
+    At school I can help my friends. I share my pens and explain homework.  
+    In the park I can help nature. I pick up litter and throw it in the bin.
+  </p>
+</div>
+
+<ol>
+  <li>How does Ali help at home?<br><input id="r1" type="text"></li><br>
+  <li>How does he help his friends at school?<br><input id="r2" type="text"></li><br>
+  <li>What does he do to help nature?<br><input id="r3" type="text"></li>
+</ol>
+
+<button class="btn" onclick="checkReading()">Check reading ✅</button>
+<div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== WRITING ===== -->
+<section>
+<h3>✍ Writing — How I Can Help <span class="round-label">Writing</span></h3>
+<p>Write 3 sentences about how you can help at home, at school or in nature.</p>
+<input id="w1" type="text" placeholder="Example: I can help my mother at home."><br>
+<input id="w2" type="text" placeholder="Example: I can be kind to my friends."><br>
+<input id="w3" type="text" placeholder="Example: I can pick up litter in the park."><br>
+<button class="btn" onclick="checkWriting()">Check writing ✅</button>
+<div id="writeStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== LESSON COMPLETE ===== -->
+<section style="text-align:center;margin-top:25px;">
+<h3>🎯 Lesson Complete!</h3>
+<p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
+<button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
+<div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#1b5e20;"></div>
+<div style="margin-top:18px;">
+  <button class="btn" onclick="goBack()">⬅ Back</button>
+  <button class="btn" onclick="goMenu()">🏠 Main Menu</button>
+  <button class="btn" onclick="goNext()">Next ➡️</button>
+</div>
+</section>
+</main>
+
+<script>
+let totalStars = 0;
+function addStar(){
+  totalStars++;
+  document.getElementById('lessonStarsLine').innerText =
+    "You have " + totalStars + " ⭐ in this lesson.";
+  document.getElementById('finalStars').innerText = totalStars;
+}
+
+// TTS
+function speakBayanText(t){
+  if(!('speechSynthesis' in window)) return;
+  const u = new SpeechSynthesisUtterance(t);
+  u.lang = "en-US";
+  u.rate = 0.9;
+  u.pitch = 1.05;
+  speechSynthesis.speak(u);
+}
+function stopBayan(){ speechSynthesis.cancel(); }
+function speakVocab(t){ speakBayanText(t); }
+
+// mark ✓ / ✗
+function markAnswer(el, ok){
+  let m = el.parentElement.querySelector('.mark-icon');
+  if(!m){
+    m = document.createElement('span');
+    el.parentElement.appendChild(m);
+  }
+  m.textContent = ok ? '✅' : '❌';
+  m.className = 'mark-icon ' + (ok ? 'correctMark' : 'wrongMark');
+}
+
+/* ===== VOCABULARY ===== */
+function checkVocab(){
+  let c = 0;
+  ['v1','v2','v3','v4','v5'].forEach(id=>{
+    const q = document.querySelector('input[name="'+id+'"]:checked');
+    if(q){
+      const ok = q.value === '1';
+      markAnswer(q, ok);
+      if(ok) c++;
+    }
+  });
+  if(c>0){
+    addStar();
+    document.getElementById('vocabStars').innerText = '⭐ ' + c + ' correct!';
+  } else {
+    document.getElementById('vocabStars').innerText = 'No correct answers yet. Try again!';
+  }
+}
+
+/* ===== GRAMMAR ===== */
+function checkGrammar(){
+  let c = 0;
+  [['g1','can'],['g2','cant'],['g3','can']].forEach(([id,ans])=>{
+    const q = document.querySelector('input[name="'+id+'"]:checked');
+    if(q){
+      const ok = q.value === ans;
+      markAnswer(q, ok);
+      if(ok) c++;
+    }
+  });
+  if(c>0){
+    addStar();
+    document.getElementById('grammarStars').innerText = '⭐ ' + c + ' correct!';
+  } else {
+    document.getElementById('grammarStars').innerText = 'No correct answers yet. Try again!';
+  }
+}
+
+/* ===== LISTENING ===== */
+function bayanListening(){
+  const t =
+    "Today is helping day at school. " +
+    "The children help the teacher in the classroom. " +
+    "They tidy the desks and pick up litter from the floor. " +
+    "They do not throw rubbish. " +
+    "They help each other and feel happy.";
+  speakBayanText(t);
+}
+function checkListening(){
+  let c = 0;
+  if(document.getElementById('t1').value === 'True') c++;
+  if(document.getElementById('t2').value === 'False') c++;
+  if(document.getElementById('t3').value === 'True') c++;
+  if(c>0){
+    addStar();
+    document.getElementById('listenStars').innerText = '⭐ ' + c + ' correct!';
+  } else {
+    document.getElementById('listenStars').innerText = 'No correct answers yet. Try again!';
+  }
+}
+
+/* ===== READING ===== */
+function bayanReading(){
+  const t =
+    "My name is Ali. I am eleven years old. " +
+    "At home I can help my family. I tidy my room and wash the dishes. " +
+    "At school I can help my friends. I share my pens and explain homework. " +
+    "In the park I can help nature. I pick up litter and throw it in the bin.";
+  speakBayanText(t);
+}
+function checkReading(){
+  let c = 0;
+  const v1 = document.getElementById('r1').value.toLowerCase();
+  const v2 = document.getElementById('r2').value.toLowerCase();
+  const v3 = document.getElementById('r3').value.toLowerCase();
+  if(v1.includes('tidy') || v1.includes('room') || v1.includes('dishes')) c++;
+  if(v2.includes('share') || v2.includes('pens') || v2.includes('homework')) c++;
+  if(v3.includes('litter') || v3.includes('bin') || v3.includes('park')) c++;
+  if(c>0){
+    addStar();
+    document.getElementById('readStars').innerText = '⭐ ' + c + ' correct!';
+  } else {
+    document.getElementById('readStars').innerText = 'No correct answers yet. Try again!';
+  }
+}
+
+/* ===== WRITING ===== */
+function checkWriting(){
+  let c = 0;
+  ['w1','w2','w3'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el.value.trim() !== '') c++;
+  });
+  if(c>0){
+    addStar();
+    document.getElementById('writeStars').innerText = '⭐ ' + c + ' good sentences!';
+  } else {
+    document.getElementById('writeStars').innerText = 'Try to write how you can help.';
+  }
+}
+
+/* ===== FINISH + NAV ===== */
+function finishLesson(){
+  document.getElementById('finalStars').innerText = totalStars;
+  let msg = '';
+  if(totalStars >= 10){
+    msg = '🌟 Wonderful! You know many ways to help!';
+  } else if(totalStars >= 5){
+    msg = 'Good work! Keep helping at home, school and outside.';
+  } else {
+    msg = 'You finished the lesson! Small help is still help.';
+  }
+  document.getElementById('finalMessage').innerText = msg;
+
+  const studentName = localStorage.getItem('studentName') || 'Unknown Student';
+  const allResults = JSON.parse(localStorage.getItem('teacherJournal') || '{}');
+  allResults[studentName] = allResults[studentName] || {};
+  allResults[studentName]['Lesson 12'] = totalStars;
+  localStorage.setItem('teacherJournal', JSON.stringify(allResults));
+  localStorage.setItem('lesson12Stars', totalStars);
+  alert('Lesson 12 saved! ' + studentName + ' got ' + totalStars + '⭐.');
+}
+function goBack(){ location.href = 'index.html'; }
+function goMenu(){ location.href = 'index.html'; }
+function goNext(){ location.href = 'theme13.html'; }
+</script>
+</body>
+</html>
+
+    
+ 
+     
+   

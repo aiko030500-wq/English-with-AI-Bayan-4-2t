@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme 11 — What do you do?</title>
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  background: radial-gradient(circle at top,#ffebee 0%,#ffcdd2 35%,#ef9a9a 100%);
+  margin:0;
+  color:#b71c1c;
+  text-align:center;
+}
+header {
+  background:linear-gradient(90deg,#d32f2f,#f44336);
+  color:white;
+  padding:0.6rem 1rem;
+  border-bottom:5px solid #ffcdd2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo {
+  width:55px;height:55px;
+  border-radius:50%;
+  border:3px solid #ffcdd2;
+  background:white;
+  object-fit:cover;
+}
+h2{color:#c62828;}
+section {
+  background:rgba(255,255,255,0.98);
+  border-radius:18px;
+  box-shadow:0 0 12px rgba(0,0,0,0.12);
+  padding:15px;
+  max-width:860px;
+  margin:15px auto;
+  text-align:left;
+  line-height:1.5;
+  font-size:0.95rem;
+}
+h3 {
+  background:linear-gradient(90deg,#e53935,#ef5350);
+  color:white;
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:1rem;
+}
+.btn {
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border:none;
+  border-radius:10px;
+  background:#e53935;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+.btn:hover{background:#ffcdd2;color:#b71c1c;}
+input[type="text"],textarea,select{
+  border-radius:8px;
+  border:1px solid #ccc;
+  padding:6px;
+  font-family:inherit;
+  font-size:0.9rem;
+}
+input[type="text"]{width:100%;max-width:380px;}
+textarea{width:100%;}
+.round-label{
+  display:inline-block;
+  background:#ffcdd2;
+  color:#b71c1c;
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:0.75rem;
+  font-weight:bold;
+  margin-left:6px;
+}
+.mark-icon{margin-left:8px;font-size:1.2rem;font-weight:bold;}
+.correctMark{color:#00c853;}
+.wrongMark{color:#ff1744;}
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="logo.png" class="logo" alt="AI Bayan logo">
+    <div>
+      <h1 style="margin:0;font-size:1rem;">Theme 11 — What do you do?</h1>
+      <p style="margin:0;color:#ffebee;">English with AI Bayan — Talking about jobs</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<h2>❤️ What do you do?</h2>
+<p style="font-style:italic;color:#d32f2f;">Ask and answer questions about jobs and work</p>
+<p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
+
+<!-- ===== Vocabulary ===== -->
+<section>
+<h3>🧠 Vocabulary — Jobs and People <span class="round-label">Vocabulary</span></h3>
+<p><b>Choose the correct translation (на русский).</b></p>
+
+<p>1) dentist  
+<button class="btn" onclick="speakVocab('A dentist helps people with their teeth.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v1" value="1"> стоматолог</label><br>
+<label><input type="radio" name="v1" value="0"> продавец</label><br>
+
+<p>2) engineer  
+<button class="btn" onclick="speakVocab('An engineer builds and designs machines or buildings.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v2" value="1"> инженер</label><br>
+<label><input type="radio" name="v2" value="0"> певец</label><br>
+
+<p>3) waiter  
+<button class="btn" onclick="speakVocab('A waiter serves food and drinks in a café or restaurant.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v3" value="1"> официант</label><br>
+<label><input type="radio" name="v3" value="0"> врач</label><br>
+
+<p>4) artist  
+<button class="btn" onclick="speakVocab('An artist paints pictures or draws art.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v4" value="1"> художник</label><br>
+<label><input type="radio" name="v4" value="0"> строитель</label><br>
+
+<p>5) singer  
+<button class="btn" onclick="speakVocab('A singer sings songs on stage.')">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<label><input type="radio" name="v5" value="1"> певец</label><br>
+<label><input type="radio" name="v5" value="0"> водитель</label><br>
+
+<button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
+<div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== Grammar ===== -->
+<section>
+<h3>📘 Grammar — What do you do? / What does he do? <span class="round-label">Grammar</span></h3>
+<p><b>We use “do” and “does” to ask about jobs.</b></p>
+<p>Example: What do you do? — I am a teacher.  
+What does he do? — He is a driver.</p>
+
+<p>1) What ___ you do?</p>
+<label><input type="radio" name="g1" value="do"> do</label><br>
+<label><input type="radio" name="g1" value="does"> does</label><br>
+
+<p>2) What ___ your father do?</p>
+<label><input type="radio" name="g2" value="does"> does</label><br>
+<label><input type="radio" name="g2" value="do"> do</label><br>
+
+<p>3) He ___ a dentist.</p>
+<label><input type="radio" name="g3" value="is"> is</label><br>
+<label><input type="radio" name="g3" value="are"> are</label><br>
+
+<button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
+<div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== Listening ===== -->
+<section>
+<h3>🎧 Listening — Talking about jobs <span class="round-label">Listening</span></h3>
+<p><b>Listen and choose True or False.</b></p>
+<button class="btn" onclick="bayanListening()">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+<p>1) John is a dentist.</p>
+<select id="t1"><option>—</option><option>True</option><option>False</option></select>
+<p>2) His sister is a singer.</p>
+<select id="t2"><option>—</option><option>True</option><option>False</option></select>
+<p>3) Their father is an engineer.</p>
+<select id="t3"><option>—</option><option>True</option><option>False</option></select>
+
+<button class="btn" onclick="checkListening()">Check listening ✅</button>
+<div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== Reading ===== -->
+<section>
+<h3>📖 Reading — My Family’s Jobs <span class="round-label">Reading</span></h3>
+<p><b>Read or listen:</b></p>
+<button class="btn" onclick="bayanReading()">▶ Play</button>
+<button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+<div style="margin-top:10px;background:#ffebee;border-radius:10px;padding:10px;">
+  <p>
+    My name is Arman. My father is an engineer.  
+    He builds bridges and roads.  
+    My mother is a doctor. She helps sick people.  
+    My sister is a student. She wants to be a teacher.  
+    We all work and study hard.
+  </p>
+</div>
+
+<ol>
+  <li>What does Arman’s father do?<br><input id="r1" type="text"></li><br>
+  <li>What does his mother do?<br><input id="r2" type="text"></li><br>
+  <li>What does his sister want to be?<br><input id="r3" type="text"></li>
+</ol>
+
+<button class="btn" onclick="checkReading()">Check reading ✅</button>
+<div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== Writing ===== -->
+<section>
+<h3>✍ Writing — About My Family <span class="round-label">Writing</span></h3>
+<p>Write 3 sentences about what people in your family do.</p>
+<input id="w1" type="text" placeholder="Example: My father is a driver."><br>
+<input id="w2" type="text" placeholder="Example: My mother is a teacher."><br>
+<input id="w3" type="text" placeholder="Example: My brother is a student."><br>
+<button class="btn" onclick="checkWriting()">Check writing ✅</button>
+<div id="writeStars" style="font-size:1.1rem;margin-top:8px;"></div>
+</section>
+
+<!-- ===== Lesson Complete ===== -->
+<section style="text-align:center;margin-top:25px;">
+<h3>🎯 Lesson Complete!</h3>
+<p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
+<button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
+<div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#b71c1c;"></div>
+<div style="margin-top:18px;">
+  <button class="btn" onclick="goBack()">⬅ Back</button>
+  <button class="btn" onclick="goMenu()">🏠 Main Menu</button>
+  <button class="btn" onclick="goNext()">Next ➡️</button>
+</div>
+</section>
+</main>
+
+<script>
+let totalStars=0;
+function addStar(){totalStars++;lessonStarsLine.innerText="You have "+totalStars+" ⭐ in this lesson.";finalStars.innerText=totalStars;}
+function speakBayanText(t){if(!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.9;u.pitch=1.05;speechSynthesis.speak(u);}
+function stopBayan(){speechSynthesis.cancel();}
+function speakVocab(t){speakBayanText(t);}
+function markAnswer(el,ok){let m=el.parentElement.querySelector('.mark-icon');if(!m){m=document.createElement('span');el.parentElement.appendChild(m);}m.textContent=ok?'✅':'❌';m.className='mark-icon '+(ok?'correctMark':'wrongMark');}
+function checkVocab(){let c=0;['v1','v2','v3','v4','v5'].forEach(id=>{const q=document.querySelector('input[name="'+id+'"]:checked');if(q){const ok=q.value==='1';markAnswer(q,ok);if(ok)c++;}});if(c>0){addStar();vocabStars.innerText='⭐ '+c+' correct!';}}
+function checkGrammar(){let c=0;[['g1','do'],['g2','does'],['g3','is']].forEach(([id,a])=>{const q=document.querySelector('input[name="'+id+'"]:checked');if(q){const ok=q.value===a;markAnswer(q,ok);if(ok)c++;}});if(c>0){addStar();grammarStars.innerText='⭐ '+c+' correct!';}}
+function bayanListening(){speakBayanText('John is a dentist. His sister is a singer. Their father is an engineer.');}
+function checkListening(){let c=0;if(t1.value==='True')c++;if(t2.value==='True')c++;if(t3.value==='True')c++;if(c>0){addStar();listenStars.innerText='⭐ '+c+' correct!';}}
+function bayanReading(){speakBayanText('My name is Arman. My father is an engineer. My mother is a doctor. My sister is a student. We all work and study hard.');}
+function checkReading(){let c=0;if(r1.value.toLowerCase().includes('engineer'))c++;if(r2.value.toLowerCase().includes('doctor'))c++;if(r3.value.toLowerCase().includes('teacher'))c++;if(c>0){addStar();readStars.innerText='⭐ '+c+' correct!';}}
+function checkWriting(){let c=0;[w1,w2,w3].forEach(x=>{if(x.value.trim()!=='')c++;});if(c>0){addStar();writeStars.innerText='⭐ '+c+' good sentences!';}}
+function finishLesson(){finalStars.innerText=totalStars;let msg=totalStars>=10?'🌟 Excellent! You can talk about jobs confidently!':'Good work! Practise asking “What do you do?”';finalMessage.innerText=msg;localStorage.setItem('lesson11Stars',totalStars);alert('Lesson 11 saved! '+totalStars+'⭐');}
+function goBack(){location.href='index.html';}function goMenu(){location.href='index.html';}function goNext(){location.href='theme12.html';}
+</script>
+</body>
+</html>
+
+   
+
+        
